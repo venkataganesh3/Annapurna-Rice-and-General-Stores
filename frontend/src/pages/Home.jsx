@@ -137,18 +137,21 @@ const filteredProducts = products.filter((p) => {
               />
             </div>
             <div className="col-md-4">
-  <select
-    className="form-select"
-    value={typeFilter}
-    onChange={(e) => setTypeFilter(e.target.value)}
-  >
-    <option value="">All Types</option>
-    <option value="Biryani Rice">Biryani Rice</option>
-    <option value="Raw Rice">Raw Rice</option>
-    <option value="Steamed Rice">Steamed Rice</option>
-    <option value="Brown Rice">Brown Rice</option>
-  </select>
+  {activeTab === 'rice' && (
+    <select
+      className="form-select"
+      value={typeFilter}
+      onChange={(e) => setTypeFilter(e.target.value)}
+    >
+      <option value="">All Types</option>
+      <option value="Biryani Rice">Biryani Rice</option>
+      <option value="Raw Rice">Raw Rice</option>
+      <option value="Steamed Rice">Steamed Rice</option>
+      <option value="Brown Rice">Brown Rice</option>
+    </select>
+  )}
 </div>
+
 
             <div className="col-md-4">
               <button
