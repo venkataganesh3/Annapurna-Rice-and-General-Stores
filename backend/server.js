@@ -16,6 +16,7 @@ app.use(cors());
 app.use(express.json({ limit: '10mb' })); // for image data or base64
 
 // Routes
+
 app.use('/api/auth', authRoutes);
 app.use('/api/offers', offerRoutes);
 app.use('/api/products', productRoutes);

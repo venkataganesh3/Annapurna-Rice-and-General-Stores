@@ -10,11 +10,26 @@ import AdminProtectedRoute from './components/AdminProtectedRoute';
 import CartModal from './components/CartModal';
 import ProductDetails from './components/ProductDetails';
 import UserOrders from './pages/UserOrders'; // ✅ Make sure this file exists and is correct
+import LoadingSpinner from './components/LoadingSpinner';
 
 function App() {
   const [authModalOpen, setAuthModalOpen] = useState(false);
   const [cartModalOpen, setCartModalOpen] = useState(false);
   const [user, setUser] = useState(null);
+
+const [loading, setLoading] = useState(true);
+
+  useEffect(() => {
+    // Simulate API loading or initial page loading
+    const timer = setTimeout(() => {
+      setLoading(false);
+    }, 2000); // 2 seconds
+    return () => clearTimeout(timer);
+  }, []);
+
+
+
+
 
   useEffect(() => {
     const storedUser = localStorage.getItem('user');
@@ -51,6 +66,9 @@ function App() {
 
   return (
     <Router>
+     {loading ? (
+        <LoadingSpinner />
+      ) : (
       <div className="d-flex flex-column min-vh-100">
         <Routes>
           {/* ✅ Home Page */}
@@ -99,6 +117,7 @@ function App() {
           />
         </Routes>
       </div>
+       )}
     </Router>
   );
 }
